@@ -63,3 +63,7 @@ The current implementation uses a Flask server to handle both serving the websit
 - Update the examples in `js/main.js` to showcase your language features
 - Modify the documentation in `index.html` to accurately describe your language
 - Adjust the styling in `css/styles.css` to match your preferred design
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
