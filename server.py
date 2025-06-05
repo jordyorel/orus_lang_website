@@ -1,17 +1,25 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import subprocess
 import tempfile
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024  # Limit request size to 16KB
 
 # Configure this path to point to your Orus interpreter
-ORUS_INTERPRETER_PATH = "./orus"  # Update this to your actual interpreter path
+ORUS_INTERPRETER_PATH = "/usr/local/bin/orus"  # Path to your Orus interpreter
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return send_from_directory('.', 'index.html')
+
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory('css', path)
+
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('js', path)
 
 @app.route('/api/execute', methods=['POST'])
 def execute_code():
