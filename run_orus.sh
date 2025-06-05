@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to your Orus interpreter
-ORUS_PATH="./orus"  # Update this to your actual interpreter path
+ORUS_PATH="/usr/local/bin/orus"  # Updated path to the Orus interpreter
 
 # Create a temporary file
 TEMP_FILE=$(mktemp --suffix=.orus)

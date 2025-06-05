@@ -69,13 +69,33 @@
                     <select id="example-select">
                         <option value="">Select an example...</option>
                         <option value="hello-world">Hello World</option>
-                        <option value="fibonacci">Fibonacci Sequence</option>
-                        <option value="sorting">Sorting Algorithm</option>
+                        <option value="variables">Variable Assignments</option>
+                        <option value="variable-types">Variable Types</option>
+                        <option value="complex-expressions">Complex Expressions</option>
+                        <option value="float-operations">Float Operations</option>
+                        <option value="int-operations">Integer Operations</option>
+                        <option value="float-comparison">Float Comparisons</option>
+                        <option value="int-comparison">Integer Comparisons</option>
+                        <option value="for-loop">For Loops</option>
+                        <option value="while-loop">While Loops</option>
+                        <option value="if-else">If-Else Statements</option>
+                        <option value="break-test">Break Statements</option>
+                        <option value="continue-test">Continue Statements</option>
+                        <option value="nested-loops">Nested Loops</option>
+                        <option value="basic-functions">Basic Functions</option>
+                        <option value="advanced-functions">Advanced Functions</option>
+                        <option value="string-interpolation">String Interpolation</option>
+                        <option value="string-concat">String Concatenation</option>
+                        <option value="sorting-algorithms">Sorting Algorithms</option>
+                        <option value="data-structures">Stack and Queue</option>
+                        <option value="calculator-struct">Calculator Struct</option>
+                        <option value="composition">Composition Pattern</option>
+                        <option value="student-class">Student Class Example</option>
                     </select>
                 </div>
                 <div class="editor-wrapper">
                     <textarea id="code-editor">// Write your Orus code here
-print("Hello, World!");</textarea>
+print("Hello, World!")</textarea>
                 </div>
                 <div class="output-container">
                     <h3>Output</h3>
@@ -99,45 +119,127 @@ print("Hello, World!");
                 </div>
                 
                 <div class="example-card">
-                    <h3>Fibonacci Sequence</h3>
+                    <h3>Variable Assignments</h3>
                     <pre class="code-block"><code class="language-javascript">
-// Calculate Fibonacci numbers
-function fibonacci(n) {
-    if (n <= 1) return n;
-    return fibonacci(n-1) + fibonacci(n-2);
-}
+// Tests variable assignments
+let x: i32 = 10
+let y: i32 = 20
 
-for (let i = 0; i < 10; i++) {
-    print(fibonacci(i));
-}
+print("Initial values:")
+print(x)
+print(y)
+
+x = 30
+print("After assignment:")
+print(x)
                     </code></pre>
-                    <button class="btn secondary try-example" data-example="fibonacci">Try it</button>
+                    <button class="btn secondary try-example" data-example="variables">Try it</button>
                 </div>
                 
                 <div class="example-card">
-                    <h3>Sorting Algorithm</h3>
+                    <h3>Function Example</h3>
                     <pre class="code-block"><code class="language-javascript">
-// Bubble sort implementation
-function bubbleSort(arr) {
-    let n = arr.length;
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                // Swap elements
-                let temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
+// Simple recursive function
+fn factorial(n: i32) -> i32 {
+    if n <= 1 {
+        return 1
+    } else {
+        return n * factorial(n - 1)
     }
-    return arr;
 }
 
-let numbers = [64, 34, 25, 12, 22, 11, 90];
-print("Original array: " + numbers);
-print("Sorted array: " + bubbleSort(numbers));
+print("Factorial of 5:")
+print(factorial(5))
                     </code></pre>
-                    <button class="btn secondary try-example" data-example="sorting">Try it</button>
+                    <button class="btn secondary try-example" data-example="advanced-functions">Try it</button>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Control Flow</h3>
+                    <pre class="code-block"><code class="language-javascript">
+// Test if-else control flow
+let x = 10
+let y = 20
+
+if x > y {
+    print("x is greater than y")
+} elif x < y {
+    print("x is less than y")
+} else {
+    print("x is equal to y")
+}
+                    </code></pre>
+                    <button class="btn secondary try-example" data-example="if-else">Try it</button>
+                </div>
+                
+                <div class="example-card">
+                    <h3>For Loop Example</h3>
+                    <pre class="code-block"><code class="language-javascript">
+// Test for loop control flow
+let sum = 0
+
+print("For Loop Test:")
+
+for i in 1..5 {
+    print("Iteration:")
+    print(i)
+    sum = sum + i
+}
+
+print("Final sum:")
+print(sum)
+                    </code></pre>
+                    <button class="btn secondary try-example" data-example="for-loop">Try it</button>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Stack Data Structure</h3>
+                    <pre class="code-block"><code class="language-javascript">
+// A simple Stack implementation
+struct Stack {
+    data: [i32; 10],
+    top: i32
+}
+
+impl Stack {
+    fn new() -> Stack {
+        return Stack{
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            top: -1
+        }
+    }
+    
+    fn push(self, value: i32) -> bool {
+        if self.top >= 9 {
+            // Stack overflow
+            return false
+        }
+        
+        self.top = self.top + 1
+        self.data[self.top] = value
+        return true
+    }
+    
+    fn pop(self) -> i32 {
+        if self.top < 0 {
+            // Stack underflow
+            return -1
+        }
+        
+        let value: i32 = self.data[self.top]
+        self.top = self.top - 1
+        return value
+    }
+}
+
+// Test the Stack
+let stack = Stack.new()
+stack.push(10)
+stack.push(20)
+print("Popped from stack: ")
+print(stack.pop())
+                    </code></pre>
+                    <button class="btn secondary try-example" data-example="data-structures">Try it</button>
                 </div>
             </div>
         </section>

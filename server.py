@@ -78,4 +78,4 @@ def execute_code():
 if __name__ == '__main__':
     # Use static_folder to serve the website files
     app.static_folder = '.'
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=8002)
