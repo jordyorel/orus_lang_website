@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orus Programming Language</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Orus</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#playground">Playground</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Orus Programming Language</h1>
+                <p>A modern, expressive programming language designed for clarity and productivity.</p>
+                <div class="cta-buttons">
+                    <a href="#playground" class="btn primary">Try Orus Online</a>
+                    <a href="#documentation" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="features">
+                <h2>Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Simple Syntax</h3>
+                        <p>Clean, readable syntax that focuses on developer productivity.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Powerful Abstractions</h3>
+                        <p>Express complex ideas with elegant, concise code.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Type Safety</h3>
+                        <p>Catch errors at compile time with a strong type system.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Modern Paradigms</h3>
+                        <p>Support for functional, object-oriented, and procedural programming.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="playground" class="section">
+            <h2>Orus Playground</h2>
+            <p>Write and execute Orus code directly in your browser.</p>
+            
+            <div class="editor-container">
+                <div class="editor-header">
+                    <button id="run-button" class="btn primary">Run Code</button>
+                    <button id="clear-button" class="btn secondary">Clear</button>
+                    <select id="example-select">
+                        <option value="">Select an example...</option>
+                        <option value="hello-world">Hello World</option>
+                        <option value="fibonacci">Fibonacci Sequence</option>
+                        <option value="sorting">Sorting Algorithm</option>
+                    </select>
+                </div>
+                <div class="editor-wrapper">
+                    <textarea id="code-editor">// Write your Orus code here
+print("Hello, World!");</textarea>
+                </div>
+                <div class="output-container">
+                    <h3>Output</h3>
+                    <pre id="output"></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples" class="section">
+            <h2>Orus Code Examples</h2>
+            <p>Explore these examples to get a feel for the Orus language.</p>
+            
+            <div class="examples-container">
+                <div class="example-card">
+                    <h3>Hello World</h3>
+                    <pre class="code-block">
+// The classic Hello World program
+print("Hello, World!");
+                    </pre>
+                    <button class="btn secondary try-example" data-example="hello-world">Try it</button>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Fibonacci Sequence</h3>
+                    <pre class="code-block">
+// Calculate Fibonacci numbers
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+
+for (let i = 0; i < 10; i++) {
+    print(fibonacci(i));
+}
+                    </pre>
+                    <button class="btn secondary try-example" data-example="fibonacci">Try it</button>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Sorting Algorithm</h3>
+                    <pre class="code-block">
+// Bubble sort implementation
+function bubbleSort(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap elements
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+let numbers = [64, 34, 25, 12, 22, 11, 90];
+print("Original array: " + numbers);
+print("Sorted array: " + bubbleSort(numbers));
+                    </pre>
+                    <button class="btn secondary try-example" data-example="sorting">Try it</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="documentation" class="section">
+            <h2>Orus Documentation</h2>
+            <p>Learn how to use the Orus programming language with our comprehensive documentation.</p>
+            
+            <div class="documentation-container">
+                <div class="sidebar">
+                    <h3>Contents</h3>
+                    <ul>
+                        <li><a href="#getting-started" class="doc-link active">Getting Started</a></li>
+                        <li><a href="#syntax" class="doc-link">Syntax Basics</a></li>
+                        <li><a href="#data-types" class="doc-link">Data Types</a></li>
+                        <li><a href="#functions" class="doc-link">Functions</a></li>
+                        <li><a href="#control-flow" class="doc-link">Control Flow</a></li>
+                    </ul>
+                </div>
+                
+                <div class="doc-content">
+                    <div id="getting-started" class="doc-section active">
+                        <h3>Getting Started with Orus</h3>
+                        <p>Orus is a modern programming language designed to be expressive, safe, and easy to learn. This guide will help you get started with Orus programming.</p>
+                        <h4>Installation</h4>
+                        <p>Coming soon...</p>
+                        <h4>Your First Orus Program</h4>
+                        <pre class="code-block">
+// Save this as hello.orus
+print("Hello, World!");
+                        </pre>
+                        <p>Run your program with the Orus interpreter:</p>
+                        <pre class="code-block">
+$ orus hello.orus
+Hello, World!
+                        </pre>
+                    </div>
+                    
+                    <div id="syntax" class="doc-section">
+                        <h3>Syntax Basics</h3>
+                        <p>Orus has a clean, readable syntax inspired by modern programming languages.</p>
+                        <h4>Comments</h4>
+                        <pre class="code-block">
+// This is a single-line comment
+
+/* This is a
+   multi-line comment */
+                        </pre>
+                        <h4>Variables</h4>
+                        <pre class="code-block">
+let name = "John";  // Variable declaration
+const PI = 3.14159; // Constant declaration
+                        </pre>
+                    </div>
+                    
+                    <div id="data-types" class="doc-section">
+                        <h3>Data Types</h3>
+                        <p>Orus supports various data types for different kinds of values.</p>
+                        <h4>Basic Types</h4>
+                        <pre class="code-block">
+let num = 42;        // Integer
+let pi = 3.14159;    // Float
+let name = "Alice";  // String
+let isActive = true; // Boolean
+let nothing = null;  // Null value
+                        </pre>
+                        <h4>Collections</h4>
+                        <pre class="code-block">
+let numbers = [1, 2, 3, 4, 5];  // Array
+let person = {               // Object
+    name: "Bob",
+    age: 30,
+    isStudent: false
+};
+                        </pre>
+                    </div>
+                    
+                    <div id="functions" class="doc-section">
+                        <h3>Functions</h3>
+                        <p>Functions in Orus are first-class citizens and can be defined in multiple ways.</p>
+                        <h4>Function Declaration</h4>
+                        <pre class="code-block">
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+
+print(greet("World")); // Outputs: Hello, World!
+                        </pre>
+                        <h4>Anonymous Functions</h4>
+                        <pre class="code-block">
+let add = function(a, b) {
+    return a + b;
+};
+
+print(add(5, 3)); // Outputs: 8
+                        </pre>
+                    </div>
+                    
+                    <div id="control-flow" class="doc-section">
+                        <h3>Control Flow</h3>
+                        <p>Orus provides standard control flow statements for conditional execution and loops.</p>
+                        <h4>Conditionals</h4>
+                        <pre class="code-block">
+let age = 20;
+
+if (age >= 18) {
+    print("Adult");
+} else if (age >= 13) {
+    print("Teenager");
+} else {
+    print("Child");
+}
+                        </pre>
+                        <h4>Loops</h4>
+                        <pre class="code-block">
+// For loop
+for (let i = 0; i < 5; i++) {
+    print(i);
+}
+
+// While loop
+let count = 0;
+while (count < 5) {
+    print(count);
+    count++;
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Orus</h2>
+                <p>A modern programming language</p>
+            </div>
+            <div class="footer-links">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#playground">Playground</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>Have questions about Orus?</p>
+                <a href="mailto:info@oruslang.org">info@oruslang.org</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Orus Programming Language. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
