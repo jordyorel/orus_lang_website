@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-BdP2Rz5nVrLOT9K7m2q2M3a8F1c1BvN5GX6whh0n2VG0AoVC6+xvs2tAW6Mnxfm1YsU3n4RS0LlwM651c01Rpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" integrity="sha512-cbQXwDFK7lj2Fqfkuxbo5iD1dSbLlJGXGpfTDqbggqjHJeyzx88I3rfwjS0qYHFj26cloudfypty9RPgDi+Spw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/prism-orus-theme.css">
 </head>
 <body>
     <header>
@@ -110,7 +112,7 @@
             <div class="examples-container">
                 <div class="example-card">
                     <h3>Hello World</h3>
-                    <pre class="code-block"><code class="language-javascript">
+                    <pre class="code-block line-numbers"><code class="language-orus">
 // The classic Hello World program
 print("Hello, World!");
                     </code></pre>
@@ -119,7 +121,7 @@ print("Hello, World!");
                 
                 <div class="example-card">
                     <h3>Variable Assignments</h3>
-                    <pre class="code-block"><code class="language-javascript">
+                    <pre class="code-block line-numbers"><code class="language-orus">
 // Tests variable assignments
 let x: i32 = 10
 let y: i32 = 20
@@ -137,7 +139,7 @@ print(x)
                 
                 <div class="example-card">
                     <h3>Function Example</h3>
-                    <pre class="code-block"><code class="language-javascript">
+                    <pre class="code-block line-numbers"><code class="language-orus">
 // Simple recursive function
 fn factorial(n: i32) -> i32 {
     if n <= 1 {
@@ -155,7 +157,7 @@ print(factorial(5))
                 
                 <div class="example-card">
                     <h3>Control Flow</h3>
-                    <pre class="code-block"><code class="language-javascript">
+                    <pre class="code-block line-numbers"><code class="language-orus">
 // Test if-else control flow
 let x = 10
 let y = 20
@@ -173,7 +175,7 @@ if x > y {
                 
                 <div class="example-card">
                     <h3>For Loop Example</h3>
-                    <pre class="code-block"><code class="language-javascript">
+                    <pre class="code-block line-numbers"><code class="language-orus">
 // Test for loop control flow
 let sum = 0
 
@@ -193,7 +195,7 @@ print(sum)
                 
                 <div class="example-card">
                     <h3>Stack Data Structure</h3>
-                    <pre class="code-block"><code class="language-javascript">
+                    <pre class="code-block line-numbers"><code class="language-orus">
 // A simple Stack implementation
 struct Stack {
     data: [i32; 10],
@@ -268,17 +270,17 @@ print(stack.pop())
                         <p>Orus is a modern, expressive programming language designed for clarity and productivity. This guide will help you get started with Orus programming.</p>
                         <h4>Installation</h4>
                         <p>To install the Orus interpreter:</p>
-                        <pre class="code-block"><code class="language-bash">
+                        <pre class="code-block line-numbers"><code class="language-bash">
 # Coming soon - installation instructions
 $ curl -sL https://orus-lang.org/install | bash
                         </code></pre>
                         <h4>Your First Orus Program</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Save this as hello.orus
 print("Hello, World!")
                         </code></pre>
                         <p>Run your program with the Orus interpreter:</p>
-                        <pre class="code-block"><code class="language-bash">
+                        <pre class="code-block line-numbers"><code class="language-bash">
 $ orus hello.orus
 Hello, World!
                         </code></pre>
@@ -303,7 +305,7 @@ Hello, World!
                             <li><code>nil</code> – absence of a value, returned from functions without an explicit result</li>
                         </ul>
                         <h4>Examples</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Primitive type examples
 let i: i32 = 42       // Signed integer
 let u: u32 = 100      // Unsigned integer
@@ -312,7 +314,7 @@ let b: bool = true    // Boolean
 let s: string = "Orus Language"  // String
                         </code></pre>
                         <p>You can also let the compiler infer types:</p>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Type inference
 let inferred_i32 = 42
 let inferred_f64 = 3.14
@@ -333,7 +335,7 @@ let inferred_string = "Orus"
                         
                         <h4>Arrays</h4>
                         <p>Fixed length collections declared with <code>[T; N]</code>, where T is the type and N is the length.</p>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Array declaration and usage
 let numbers: [i32; 5] = [1, 2, 3, 4, 5]
 let first = numbers[0]    // Array indexing starts at 0
@@ -345,7 +347,7 @@ let matrix: [i32; 4] = [1, 2, 3, 4]  // 2x2 matrix as a flat array
                         
                         <h4>Structs</h4>
                         <p>Structs are records containing named fields. They are defined using the <code>struct</code> keyword.</p>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Define a Point struct
 struct Point {
     x: i32,
@@ -372,7 +374,7 @@ print("Point coordinates: ({}, {})", p.x, p.y)
                         <p>Variables are introduced with the <code>let</code> keyword and can optionally specify a type.</p>
                         
                         <h4>Variable Declaration</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Variable declarations with explicit types
 let count: i32 = 0
 let pi: f64 = 3.14159
@@ -386,7 +388,7 @@ let inferred_name = "Orus"
                         
                         <h4>Assignment</h4>
                         <p>Assignment reuses the variable name on the left hand side:</p>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 let x = 10
 print("Initial value: {}", x)
 
@@ -409,7 +411,7 @@ print("After addition: {}", x)
                         <p>Functions in Orus are defined using the <code>fn</code> keyword with an optional return type after <code>-></code>.</p>
                         
                         <h4>Function Definition</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Function with parameters and return type
 fn add(a: i32, b: i32) -> i32 {
     return a + b
@@ -423,7 +425,7 @@ fn greet(name: string) {
                         </code></pre>
                         
                         <h4>Function Calls</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 let sum = add(5, 10)
 print("Sum is: {}", sum)
 
@@ -431,7 +433,7 @@ greet("Orus")  // Prints: Hello, Orus!
                         </code></pre>
                         
                         <h4>Recursive Functions</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Recursive function to calculate factorial
 fn factorial(n: i32) -> i32 {
     if n <= 1 {
@@ -456,7 +458,7 @@ print("Factorial of 5 is: {}", factorial(5))  // Prints: 120
                         <p>Orus provides common flow control constructs:</p>
                         
                         <h4>Conditionals: if/elif/else</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 let x = 10
 let y = 20
 
@@ -471,7 +473,7 @@ if x > y {
                         
                         <h4>For Loops</h4>
                         <p>Orus uses range-based for loops with the syntax <code>for variable in start..end</code>:</p>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // For loop from 0 to 4 (5 is exclusive)
 for i in 0..5 {
     print("Iteration: {}", i)
@@ -486,7 +488,7 @@ print("Sum: {}", sum)  // Prints: 55
                         </code></pre>
                         
                         <h4>While Loops</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // While loop
 let count = 0
 let sum = 0
@@ -500,7 +502,7 @@ print("Sum: {}", sum)  // Prints: 15
                         </code></pre>
                         
                         <h4>Break and Continue</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Break example
 let sum = 0
 for i in 1..10 {
@@ -535,7 +537,7 @@ print("Sum of odd numbers: {}", sum)  // Prints: 25 (1+3+5+7+9)
                         <p>Methods are defined inside <code>impl</code> blocks attached to a <code>struct</code> type. Instance methods receive <code>self</code> as the first parameter.</p>
                         
                         <h4>Defining Methods</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 struct Rectangle {
     width: i32,
     height: i32
@@ -564,7 +566,7 @@ impl Rectangle {
                         </code></pre>
                         
                         <h4>Using Methods</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Create a rectangle using the static method
 let rect = Rectangle.create(5, 10)
 
@@ -579,7 +581,7 @@ print("New area: {}", rect.area())  // Prints: 200
                         </code></pre>
                         
                         <h4>Complex Example: Stack Implementation</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // A simple Stack implementation
 struct Stack {
     data: [i32; 10],
@@ -634,7 +636,7 @@ impl Stack {
                         <p>Use the built-in <code>print</code> function to write output. Strings may include <code>{}</code> placeholders which are replaced by the remaining arguments.</p>
                         
                         <h4>Basic Printing</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // Simple printing
 print("Hello, World!")
 
@@ -644,7 +646,7 @@ print("The answer is", answer)
                         </code></pre>
                         
                         <h4>String Interpolation</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // String interpolation with {}
 let name = "Orus"
 print("Hello, {}!", name)  // Prints: Hello, Orus!
@@ -662,7 +664,7 @@ print("{} is {} years old", name, 3)  // Prints: Orus is 3 years old
                         </code></pre>
                         
                         <h4>String Concatenation</h4>
-                        <pre class="code-block"><code class="language-javascript">
+                        <pre class="code-block line-numbers"><code class="language-orus">
 // String concatenation with +
 print("Hello " + "World")  // Prints: Hello World
 
@@ -712,7 +714,13 @@ print("Number: " + 42 + ", pi=" + 3.14)
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/display/autorefresh.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-+r/7L0KleChX2NDSSSXWMQZnIcXtNCmieYwgd0CQpZK0s8AjtKoa6HgMHqmpYyqn1nVbWcv16O3MHuvb6jV0HA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-BYO9o4+zC4UjcLxrHUz68guesezYBe8WWk5WZ87SxjlQOGe4YQUhMhwLYu5GHta/nQfiEAEN9k0Ta4xVKRQL7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js" integrity="sha512-haKYaW8dwO8GJN+qBReZoRPHMOJB4IsIxbSU5K6Pd/UDqKLzJRwO/Ks8Qhqd6xYZWHRYftfgm8Jhu8HG7H5v1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js" integrity="sha512-hGk/QvZYB3ZbVqKrw4SAHUzF2+wzX6JKOtZsKxWfnYZtCisYGZo0rvrsQdZ6U+MVd4RX5HLzOBDTTzwmqKDdeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/prism-orus.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

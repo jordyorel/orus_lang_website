@@ -1,0 +1,159 @@
+/* Orus custom theme for Prism.js - based on Monokai */
+pre[class*="language-orus"],
+code[class*="language-orus"] {
+    color: #f8f8f2;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-orus"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+    border-radius: 0.3em;
+    background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-orus"] {
+    padding: .1em .5em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+/* Orus language tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #75715e;
+    font-style: italic;
+}
+
+.token.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+    color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #e6db74;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-orus .token.string,
+.style .token.string {
+    color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #66d9ef;
+}
+
+.token.function,
+.token.class-name {
+    color: #a6e22e;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+/* Orus specific tokens */
+.language-orus .token.type {
+    color: #66d9ef;
+    font-style: italic;
+}
+
+.language-orus .token.builtin {
+    color: #a6e22e;
+}
+
+.language-orus .token.range {
+    color: #ff5555;
+}
+
+.language-orus .token.property {
+    color: #f8f8f2;
+}
+
+/* Line numbers */
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #44423c;
+    user-select: none;
+}
+
+.line-numbers-rows > span {
+    display: block;
+    counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #75715e;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+}

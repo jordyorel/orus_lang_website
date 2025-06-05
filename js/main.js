@@ -1,7 +1,80 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize CodeMirror editor
+    // Define custom mode for Orus language
+    CodeMirror.defineMode("orus", function() {
+        // Use JavaScript mode as a base since syntax is somewhat similar
+        const jsMode = CodeMirror.getMode({}, "javascript");
+        
+        return {
+            name: "orus",
+            startState: function() {
+                return jsMode.startState();
+            },
+            token: function(stream, state) {
+                // Check for type annotations after colon
+                if (stream.match(/:[ \t]*(i32|u32|f64|bool|string)/, false)) {
+                    stream.match(/:/);
+                    stream.eatSpace();
+                    stream.match(/i32|u32|f64|bool|string/);
+                    return "type";
+                }
+                
+                // Check for return type arrows
+                if (stream.match(/->[ \t]*(i32|u32|f64|bool|string|[A-Z][a-zA-Z0-9_]*)/, false)) {
+                    stream.match(/->/);
+                    stream.eatSpace();
+                    if (stream.match(/i32|u32|f64|bool|string/)) {
+                        return "type";
+                    }
+                    if (stream.match(/[A-Z][a-zA-Z0-9_]*/)) {
+                        return "variable-3"; // Custom type names
+                    }
+                }
+                
+                // Handle range operator
+                if (stream.match(/\.\./)) {
+                    return "operator";
+                }
+                
+                // Types
+                if (stream.match(/\b(i32|u32|f64|bool|string)\b/)) {
+                    return "type";
+                }
+                
+                // Keywords specific to Orus
+                if (stream.match(/\b(let|fn|return|if|else|elif|while|for|in|break|continue|struct|impl|and|or|nil|self)\b/)) {
+                    return "keyword";
+                }
+                
+                // Built-in functions
+                if (stream.match(/\b(print)\b/)) {
+                    return "builtin";
+                }
+                
+                // Boolean literals
+                if (stream.match(/\b(true|false)\b/)) {
+                    return "atom";
+                }
+                
+                // Struct or type names (capitalized identifiers)
+                if (stream.match(/\b[A-Z][a-zA-Z0-9_]*\b/)) {
+                    return "variable-3";
+                }
+                
+                // Defer to JavaScript mode for other tokens
+                return jsMode.token(stream, state);
+            },
+            indent: jsMode.indent,
+            electricInput: jsMode.electricInput,
+            lineComment: "//",
+            blockCommentStart: "/*",
+            blockCommentEnd: "*/",
+            fold: "brace"
+        };
+    });
+    
+    // Initialize CodeMirror editor with Orus mode
     const codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-        mode: 'javascript',
+        mode: 'orus',
         theme: 'monokai',
         lineNumbers: true,
         gutters: ["CodeMirror-linenumbers"],
@@ -22,6 +95,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Resize editor to fit container
     codeEditor.setSize('100%', '100%');
 
+    // Initialize Prism syntax highlighting for documentation
+    function initPrismHighlighting() {
+        if (typeof Prism !== 'undefined') {
+            // Force re-highlighting of all code blocks
+            document.querySelectorAll('pre code').forEach((block) => {
+                Prism.highlightElement(block);
+            });
+        }
+    }
+    
+    // Run Prism highlighting on initial load
+    setTimeout(initPrismHighlighting, 100); // Short delay to ensure DOM is ready
+    
     // Navigation functionality
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('.section');
@@ -39,6 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Show the target section
         document.getElementById(targetId).classList.add('active');
+        
+        // Refresh syntax highlighting if we're switching to a section with code examples
+        if ((targetId === 'documentation' || targetId === 'examples') && typeof Prism !== 'undefined') {
+            setTimeout(() => initPrismHighlighting(), 0);
+        }
     }
 
     navLinks.forEach(link => {
@@ -83,6 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Show the target section
             document.getElementById(targetId).classList.add('active');
+            
+            // Refresh syntax highlighting
+            if (typeof Prism !== 'undefined') {
+                setTimeout(() => initPrismHighlighting(), 0);
+            }
         });
     });
 
@@ -104,6 +200,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Show the target section
             document.getElementById(targetId).classList.add('active');
+            
+            // Refresh syntax highlighting
+            if (typeof Prism !== 'undefined') {
+                setTimeout(() => Prism.highlightAll(), 0);
+            }
         });
     });
 

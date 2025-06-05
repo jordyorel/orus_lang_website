@@ -326,14 +326,150 @@ main {
 }
 
 .code-block {
-    background-color: #2d2d2d;
+    background-color: #272822;  /* Match Monokai/Okaidia theme */
     color: #f8f8f2;
-    padding: 1rem;
+    padding: 0;  /* Remove padding as Prism will handle this */
     border-radius: 4px;
     font-family: var(--font-code);
     margin-bottom: 1rem;
     white-space: pre-wrap;
     overflow-x: auto;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhance code syntax highlighting */
+.code-block code {
+    display: block;
+    padding: 1rem;
+    font-family: var(--font-code);
+}
+
+/* Token colors for Orus syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #8292a2;
+}
+
+.token.punctuation {
+    color: #f8f8f2;
+}
+
+.token.namespace {
+    opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+    color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #66d9ef;
+}
+
+.token.function,
+.token.class-name {
+    color: #fd971f;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #fd971f;
+}
+
+/* Specific Orus syntax highlighting */
+.language-javascript .token.keyword {
+    color: #66d9ef;
+}
+
+.language-javascript .token.string {
+    color: #e6db74;
+}
+
+.language-javascript .token.function {
+    color: #a6e22e;
+}
+
+.language-javascript .token.number {
+    color: #ae81ff;
+}
+
+.language-javascript .token.comment {
+    color: #75715e;
+    font-style: italic;
+}
+
+/* Add line numbers to code blocks */
+pre.code-block {
+    position: relative;
+    counter-reset: line;
+    padding-left: 3.8em;
+    margin: 1em 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+pre.code-block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2.8em;
+    background-color: #34352f;
+    border-right: 1px solid #444;
+}
+
+pre.code-block > code {
+    counter-reset: line;
+    display: block;
+}
+
+pre.code-block > code > span.line {
+    counter-increment: line;
+    position: relative;
+}
+
+pre.code-block > code > span.line:before {
+    content: counter(line);
+    position: absolute;
+    left: -3.5em;
+    width: 2em;
+    text-align: right;
+    color: #75715e;
+    font-size: 0.9em;
+    padding-right: 0.5em;
 }
 
 /* Documentation Section */
