@@ -63,3 +63,23 @@ The current implementation uses a Flask server to handle both serving the websit
 - Update the examples in `js/main.js` to showcase your language features
 - Modify the documentation in `index.html` to accurately describe your language
 - Adjust the styling in `css/styles.css` to match your preferred design
+
+## Deploying to Netlify
+
+You can host the static portion of this site on [Netlify](https://www.netlify.com/).
+Create a new site and either link it to this repository or upload the `index.html`, `css/`, and `js/` files.
+
+Netlify only serves static files, so the Flask backend defined in `server.py` must run elsewhere.
+If you prefer, the backend logic can be adapted to [Netlify Functions](https://docs.netlify.com/functions/overview/).
+
+### Optional SPA Redirect
+
+For single-page application style routing, add a `netlify.toml` file with:
+
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
