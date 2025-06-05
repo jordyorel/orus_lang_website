@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-BdP2Rz5nVrLOT9K7m2q2M3a8F1c1BvN5GX6whh0n2VG0AoVC6+xvs2tAW6Mnxfm1YsU3n4RS0LlwM651c01Rpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
@@ -90,16 +91,16 @@ print("Hello, World!");</textarea>
             <div class="examples-container">
                 <div class="example-card">
                     <h3>Hello World</h3>
-                    <pre class="code-block">
+                    <pre class="code-block"><code class="language-javascript">
 // The classic Hello World program
 print("Hello, World!");
-                    </pre>
+                    </code></pre>
                     <button class="btn secondary try-example" data-example="hello-world">Try it</button>
                 </div>
                 
                 <div class="example-card">
                     <h3>Fibonacci Sequence</h3>
-                    <pre class="code-block">
+                    <pre class="code-block"><code class="language-javascript">
 // Calculate Fibonacci numbers
 function fibonacci(n) {
     if (n <= 1) return n;
@@ -109,13 +110,13 @@ function fibonacci(n) {
 for (let i = 0; i < 10; i++) {
     print(fibonacci(i));
 }
-                    </pre>
+                    </code></pre>
                     <button class="btn secondary try-example" data-example="fibonacci">Try it</button>
                 </div>
                 
                 <div class="example-card">
                     <h3>Sorting Algorithm</h3>
-                    <pre class="code-block">
+                    <pre class="code-block"><code class="language-javascript">
 // Bubble sort implementation
 function bubbleSort(arr) {
     let n = arr.length;
@@ -135,7 +136,7 @@ function bubbleSort(arr) {
 let numbers = [64, 34, 25, 12, 22, 11, 90];
 print("Original array: " + numbers);
 print("Sorted array: " + bubbleSort(numbers));
-                    </pre>
+                    </code></pre>
                     <button class="btn secondary try-example" data-example="sorting">Try it</button>
                 </div>
             </div>
@@ -164,82 +165,82 @@ print("Sorted array: " + bubbleSort(numbers));
                         <h4>Installation</h4>
                         <p>Coming soon...</p>
                         <h4>Your First Orus Program</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 // Save this as hello.orus
 print("Hello, World!");
-                        </pre>
+                        </code></pre>
                         <p>Run your program with the Orus interpreter:</p>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-bash">
 $ orus hello.orus
 Hello, World!
-                        </pre>
+                        </code></pre>
                     </div>
                     
                     <div id="syntax" class="doc-section">
                         <h3>Syntax Basics</h3>
                         <p>Orus has a clean, readable syntax inspired by modern programming languages.</p>
                         <h4>Comments</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 // This is a single-line comment
 
 /* This is a
    multi-line comment */
-                        </pre>
+                        </code></pre>
                         <h4>Variables</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 let name = "John";  // Variable declaration
 const PI = 3.14159; // Constant declaration
-                        </pre>
+                        </code></pre>
                     </div>
                     
                     <div id="data-types" class="doc-section">
                         <h3>Data Types</h3>
                         <p>Orus supports various data types for different kinds of values.</p>
                         <h4>Basic Types</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 let num = 42;        // Integer
 let pi = 3.14159;    // Float
 let name = "Alice";  // String
 let isActive = true; // Boolean
 let nothing = null;  // Null value
-                        </pre>
+                        </code></pre>
                         <h4>Collections</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 let numbers = [1, 2, 3, 4, 5];  // Array
 let person = {               // Object
     name: "Bob",
     age: 30,
     isStudent: false
 };
-                        </pre>
+                        </code></pre>
                     </div>
                     
                     <div id="functions" class="doc-section">
                         <h3>Functions</h3>
                         <p>Functions in Orus are first-class citizens and can be defined in multiple ways.</p>
                         <h4>Function Declaration</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 function greet(name) {
     return "Hello, " + name + "!";
 }
 
 print(greet("World")); // Outputs: Hello, World!
-                        </pre>
+                        </code></pre>
                         <h4>Anonymous Functions</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 let add = function(a, b) {
     return a + b;
 };
 
 print(add(5, 3)); // Outputs: 8
-                        </pre>
+                        </code></pre>
                     </div>
                     
                     <div id="control-flow" class="doc-section">
                         <h3>Control Flow</h3>
                         <p>Orus provides standard control flow statements for conditional execution and loops.</p>
                         <h4>Conditionals</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 let age = 20;
 
 if (age >= 18) {
@@ -249,9 +250,9 @@ if (age >= 18) {
 } else {
     print("Child");
 }
-                        </pre>
+                        </code></pre>
                         <h4>Loops</h4>
-                        <pre class="code-block">
+                        <pre class="code-block"><code class="language-javascript">
 // For loop
 for (let i = 0; i < 5; i++) {
     print(i);
@@ -263,7 +264,7 @@ while (count < 5) {
     print(count);
     count++;
 }
-                        </pre>
+                        </code></pre>
                     </div>
                 </div>
             </div>
@@ -298,6 +299,7 @@ while (count < 5) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-+r/7L0KleChX2NDSSSXWMQZnIcXtNCmieYwgd0CQpZK0s8AjtKoa6HgMHqmpYyqn1nVbWcv16O3MHuvb6jV0HA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
