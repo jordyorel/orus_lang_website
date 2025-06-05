@@ -58,12 +58,48 @@ If your Orus interpreter can be compiled to WebAssembly, you could integrate it 
 
 The current implementation uses a Flask server to handle both serving the website and executing Orus code.
 
+## Enabling Netlify Functions
+
+You can also run the interpreter as a serverless function on Netlify. The
+included `netlify/functions/execute_orus.py` file contains an example function
+adapted from `server.py`.
+
+1. Deploy this repository to Netlify.
+2. In **Site settings > Functions**, set the functions directory to
+   `netlify/functions` (this is the default for new sites).
+3. When deployed, the function will be available at
+   `/.netlify/functions/execute_orus`.
+4. Update your frontend to call this endpoint instead of the local Flask route
+   when running on Netlify.
+
 ## Customization
 
 - Update the examples in `js/main.js` to showcase your language features
 - Modify the documentation in `index.html` to accurately describe your language
 - Adjust the styling in `css/styles.css` to match your preferred design
 
+<<<<<<< codex/add-permissive-license-and-documentation
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+=======
+## Deploying to Netlify
+
+You can host the static portion of this site on [Netlify](https://www.netlify.com/).
+Create a new site and either link it to this repository or upload the `index.html`, `css/`, and `js/` files.
+
+Netlify only serves static files, so the Flask backend defined in `server.py` must run elsewhere.
+If you prefer, the backend logic can be adapted to [Netlify Functions](https://docs.netlify.com/functions/overview/).
+
+### Optional SPA Redirect
+
+For single-page application style routing, add a `netlify.toml` file with:
+
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+>>>>>>> main
