@@ -4,12 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
         mode: 'javascript',
         theme: 'monokai',
         lineNumbers: true,
+        gutters: ["CodeMirror-linenumbers"],
+        fixedGutter: true,
+        cursorBlinkRate: 530, // Standard cursor blink rate
+        cursorHeight: 1.0,    // Ensure proper cursor height
+        cursorScrollMargin: 5,
+        autoRefresh: true,
         autoCloseBrackets: true,
         matchBrackets: true,
         indentUnit: 4,
         tabSize: 4,
         indentWithTabs: false,
-        lineWrapping: true
+        lineWrapping: true,
+        viewportMargin: Infinity
     });
 
     // Resize editor to fit container
@@ -113,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearButton = document.getElementById('clear-button');
 
     clearButton.addEventListener('click', function() {
-        codeEditor.setValue('// Write your Orus code here\nprint("Hello, World!")');
+        codeEditor.setValue('print("Hello, World!")');
         output.textContent = '';
     });
 
