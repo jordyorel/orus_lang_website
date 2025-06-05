@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import subprocess
 import tempfile
 import os
-import time
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024  # Limit request size to 16KB
@@ -32,41 +31,31 @@ def execute_code():
         temp_file.write(code.encode('utf-8'))
     
     try:
-        # Set a timeout for execution (5 seconds)
-        start_time = time.time()
-        max_execution_time = 5  # seconds
-        
         # Execute the Orus interpreter with the temporary file
-        process = subprocess.Popen(
+        result = subprocess.run(
             [ORUS_INTERPRETER_PATH, temp_filename],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
+            capture_output=True,
+            text=True,
+            timeout=5
         )
-        
-        # Wait for the process to complete with timeout
-        while process.poll() is None:
-            if time.time() - start_time > max_execution_time:
-                process.kill()
-                return jsonify({
-                    "output": "",
-                    "error": "Execution timed out after 5 seconds"
-                })
-            time.sleep(0.1)
-        
-        stdout, stderr = process.communicate()
-        
-        if process.returncode != 0:
+
+        if result.returncode != 0:
             return jsonify({
-                "output": stdout,
-                "error": stderr
+                "output": result.stdout,
+                "error": result.stderr
             })
-        
+
         return jsonify({
-            "output": stdout,
+            "output": result.stdout,
             "error": None
         })
-    
+
+    except subprocess.TimeoutExpired:
+        return jsonify({
+            "output": "",
+            "error": "Execution timed out after 5 seconds"
+        })
+
     except Exception as e:
         return jsonify({
             "output": "",
