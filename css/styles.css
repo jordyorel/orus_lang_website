@@ -402,6 +402,50 @@ footer {
     }
 }
 
+/* Documentation Navigation Buttons */
+.doc-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eaeaea;
+}
+
+.doc-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.doc-nav-btn:hover {
+    background-color: #3a5bef;
+}
+
+.doc-nav-btn.prev::before {
+    content: "←";
+    margin-right: 0.5rem;
+}
+
+.doc-nav-btn.next::after {
+    content: "→";
+    margin-left: 0.5rem;
+}
+
+.doc-nav-btn.disabled {
+    background-color: var(--secondary-color);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.doc-nav-placeholder {
+    width: 100px;
+}
+
 @media (max-width: 576px) {
     .hero h1 {
         font-size: 2rem;

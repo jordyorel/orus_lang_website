@@ -19,30 +19,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('.section');
 
+    // Function to handle section navigation
+    function navigateToSection(targetId) {
+        // Remove active class from all links
+        navLinks.forEach(link => link.classList.remove('active'));
+
+        // Add active class to corresponding nav link
+        document.querySelector(`.nav-links a[href="#${targetId}"]`).classList.add('active');
+
+        // Hide all sections
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Show the target section
+        document.getElementById(targetId).classList.add('active');
+    }
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-
-            // Remove active class from all links
-            navLinks.forEach(link => link.classList.remove('active'));
-
-            // Add active class to clicked link
-            this.classList.add('active');
-
-            // Get the target section id
             const targetId = this.getAttribute('href').substring(1);
+            navigateToSection(targetId);
+        });
+    });
 
-            // Hide all sections
-            sections.forEach(section => section.classList.remove('active'));
-
-            // Show the target section
-            document.getElementById(targetId).classList.add('active');
+    // Add event listeners to CTA buttons on homepage
+    const ctaButtons = document.querySelectorAll('.cta-buttons a');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            navigateToSection(targetId);
         });
     });
 
     // Documentation navigation
     const docLinks = document.querySelectorAll('.doc-link');
     const docSections = document.querySelectorAll('.doc-section');
+    
+    // Documentation navigation buttons
+    const docNavButtons = document.querySelectorAll('.doc-nav-btn');
+
+    // Add event listeners for navigation buttons
+    docNavButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the target section id
+            const targetId = this.getAttribute('href').substring(1);
+            
+            // Update sidebar navigation
+            docLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector(`.doc-link[href="#${targetId}"]`).classList.add('active');
+            
+            // Hide all doc sections
+            docSections.forEach(section => section.classList.remove('active'));
+            
+            // Show the target section
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
 
     docLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -1082,12 +1117,8 @@ print("Class average: {}", math_class.class_average())`
         button.addEventListener('click', function() {
             const exampleId = this.getAttribute('data-example');
 
-            // Switch to playground section
-            navLinks.forEach(link => link.classList.remove('active'));
-            document.querySelector('a[href="#playground"]').classList.add('active');
-
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById('playground').classList.add('active');
+            // Switch to playground section using the navigation function
+            navigateToSection('playground');
 
             // Load the example code
             if (exampleId && examples[exampleId]) {

@@ -253,120 +253,429 @@ print(stack.pop())
                     <h3>Contents</h3>
                     <ul>
                         <li><a href="#getting-started" class="doc-link active">Getting Started</a></li>
-                        <li><a href="#syntax" class="doc-link">Syntax Basics</a></li>
-                        <li><a href="#data-types" class="doc-link">Data Types</a></li>
+                        <li><a href="#primitive-types" class="doc-link">Primitive Types</a></li>
+                        <li><a href="#compound-types" class="doc-link">Compound Types</a></li>
+                        <li><a href="#variables" class="doc-link">Variables</a></li>
                         <li><a href="#functions" class="doc-link">Functions</a></li>
                         <li><a href="#control-flow" class="doc-link">Control Flow</a></li>
+                        <li><a href="#methods-impl" class="doc-link">Methods with impl</a></li>
+                        <li><a href="#printing" class="doc-link">Printing Values</a></li>
                     </ul>
                 </div>
                 
                 <div class="doc-content">
                     <div id="getting-started" class="doc-section active">
                         <h3>Getting Started with Orus</h3>
-                        <p>Orus is a modern programming language designed to be expressive, safe, and easy to learn. This guide will help you get started with Orus programming.</p>
+                        <p>Orus is a modern, expressive programming language designed for clarity and productivity. This guide will help you get started with Orus programming.</p>
                         <h4>Installation</h4>
-                        <p>Coming soon...</p>
+                        <p>To install the Orus interpreter:</p>
+                        <pre class="code-block"><code class="language-bash">
+# Coming soon - installation instructions
+$ curl -sL https://orus-lang.org/install | bash
+                        </code></pre>
                         <h4>Your First Orus Program</h4>
                         <pre class="code-block"><code class="language-javascript">
 // Save this as hello.orus
-print("Hello, World!");
+print("Hello, World!")
                         </code></pre>
                         <p>Run your program with the Orus interpreter:</p>
                         <pre class="code-block"><code class="language-bash">
 $ orus hello.orus
 Hello, World!
                         </code></pre>
+                        <p>Try the examples from this documentation in the <a href="#playground">Orus Playground</a>.</p>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <div class="doc-nav-placeholder"></div>
+                            <a href="#primitive-types" class="doc-nav-btn next" id="to-primitive-types">Next: Primitive Types</a>
+                        </div>
                     </div>
                     
-                    <div id="syntax" class="doc-section">
-                        <h3>Syntax Basics</h3>
-                        <p>Orus has a clean, readable syntax inspired by modern programming languages.</p>
-                        <h4>Comments</h4>
+                    <div id="primitive-types" class="doc-section">
+                        <h3>Primitive Types</h3>
+                        <p>Orus supports several built-in value types:</p>
+                        <ul>
+                            <li><code>i32</code> – signed 32-bit integers</li>
+                            <li><code>u32</code> – unsigned 32-bit integers</li>
+                            <li><code>f64</code> – 64-bit floating point numbers</li>
+                            <li><code>bool</code> – boolean values <code>true</code> or <code>false</code></li>
+                            <li><code>string</code> – UTF-8 text</li>
+                            <li><code>nil</code> – absence of a value, returned from functions without an explicit result</li>
+                        </ul>
+                        <h4>Examples</h4>
                         <pre class="code-block"><code class="language-javascript">
-// This is a single-line comment
+// Primitive type examples
+let i: i32 = 42       // Signed integer
+let u: u32 = 100      // Unsigned integer
+let f: f64 = 3.14159  // Floating point
+let b: bool = true    // Boolean
+let s: string = "Orus Language"  // String
+                        </code></pre>
+                        <p>You can also let the compiler infer types:</p>
+                        <pre class="code-block"><code class="language-javascript">
+// Type inference
+let inferred_i32 = 42
+let inferred_f64 = 3.14
+let inferred_bool = true
+let inferred_string = "Orus"
+                        </code></pre>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#getting-started" class="doc-nav-btn prev" id="to-getting-started">Previous: Getting Started</a>
+                            <a href="#compound-types" class="doc-nav-btn next" id="to-compound-types">Next: Compound Types</a>
+                        </div>
+                    </div>
+                    
+                    <div id="compound-types" class="doc-section">
+                        <h3>Compound Types</h3>
+                        <p>Orus provides two compound type forms for creating more complex data structures:</p>
+                        
+                        <h4>Arrays</h4>
+                        <p>Fixed length collections declared with <code>[T; N]</code>, where T is the type and N is the length.</p>
+                        <pre class="code-block"><code class="language-javascript">
+// Array declaration and usage
+let numbers: [i32; 5] = [1, 2, 3, 4, 5]
+let first = numbers[0]    // Array indexing starts at 0
+let third = numbers[2]    // Access the third element
 
-/* This is a
-   multi-line comment */
+// You can also create multidimensional arrays
+let matrix: [i32; 4] = [1, 2, 3, 4]  // 2x2 matrix as a flat array
                         </code></pre>
-                        <h4>Variables</h4>
+                        
+                        <h4>Structs</h4>
+                        <p>Structs are records containing named fields. They are defined using the <code>struct</code> keyword.</p>
                         <pre class="code-block"><code class="language-javascript">
-let name = "John";  // Variable declaration
-const PI = 3.14159; // Constant declaration
+// Define a Point struct
+struct Point {
+    x: i32,
+    y: i32
+}
+
+// Create an instance of Point
+let p = Point{x: 10, y: 20}
+
+// Access fields using dot notation
+print("Point coordinates: ({}, {})", p.x, p.y)
                         </code></pre>
+                        <p>See the <a href="#methods-impl">Methods with impl</a> section for how to add methods to structs.</p>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#primitive-types" class="doc-nav-btn prev" id="to-primitive-types">Previous: Primitive Types</a>
+                            <a href="#variables" class="doc-nav-btn next" id="to-variables">Next: Variables</a>
+                        </div>
                     </div>
                     
-                    <div id="data-types" class="doc-section">
-                        <h3>Data Types</h3>
-                        <p>Orus supports various data types for different kinds of values.</p>
-                        <h4>Basic Types</h4>
+                    <div id="variables" class="doc-section">
+                        <h3>Variables</h3>
+                        <p>Variables are introduced with the <code>let</code> keyword and can optionally specify a type.</p>
+                        
+                        <h4>Variable Declaration</h4>
                         <pre class="code-block"><code class="language-javascript">
-let num = 42;        // Integer
-let pi = 3.14159;    // Float
-let name = "Alice";  // String
-let isActive = true; // Boolean
-let nothing = null;  // Null value
+// Variable declarations with explicit types
+let count: i32 = 0
+let pi: f64 = 3.14159
+let name: string = "Orus"
+let active: bool = true
+
+// Type inference (compiler determines the type)
+let inferred_count = 0
+let inferred_name = "Orus"
                         </code></pre>
-                        <h4>Collections</h4>
+                        
+                        <h4>Assignment</h4>
+                        <p>Assignment reuses the variable name on the left hand side:</p>
                         <pre class="code-block"><code class="language-javascript">
-let numbers = [1, 2, 3, 4, 5];  // Array
-let person = {               // Object
-    name: "Bob",
-    age: 30,
-    isStudent: false
-};
+let x = 10
+print("Initial value: {}", x)
+
+x = 20  // Assignment
+print("After assignment: {}", x)
+
+x = x + 5  // Expressions in assignments
+print("After addition: {}", x)
                         </code></pre>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#compound-types" class="doc-nav-btn prev" id="to-compound-types">Previous: Compound Types</a>
+                            <a href="#functions" class="doc-nav-btn next" id="to-functions">Next: Functions</a>
+                        </div>
                     </div>
                     
                     <div id="functions" class="doc-section">
                         <h3>Functions</h3>
-                        <p>Functions in Orus are first-class citizens and can be defined in multiple ways.</p>
-                        <h4>Function Declaration</h4>
+                        <p>Functions in Orus are defined using the <code>fn</code> keyword with an optional return type after <code>-></code>.</p>
+                        
+                        <h4>Function Definition</h4>
                         <pre class="code-block"><code class="language-javascript">
-function greet(name) {
-    return "Hello, " + name + "!";
+// Function with parameters and return type
+fn add(a: i32, b: i32) -> i32 {
+    return a + b
 }
 
-print(greet("World")); // Outputs: Hello, World!
+// Function that returns nothing (nil)
+fn greet(name: string) {
+    print("Hello, {}!", name)
+    // No return statement needed for nil return
+}
                         </code></pre>
-                        <h4>Anonymous Functions</h4>
+                        
+                        <h4>Function Calls</h4>
                         <pre class="code-block"><code class="language-javascript">
-let add = function(a, b) {
-    return a + b;
-};
+let sum = add(5, 10)
+print("Sum is: {}", sum)
 
-print(add(5, 3)); // Outputs: 8
+greet("Orus")  // Prints: Hello, Orus!
                         </code></pre>
+                        
+                        <h4>Recursive Functions</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// Recursive function to calculate factorial
+fn factorial(n: i32) -> i32 {
+    if n <= 1 {
+        return 1
+    } else {
+        return n * factorial(n - 1)
+    }
+}
+
+print("Factorial of 5 is: {}", factorial(5))  // Prints: 120
+                        </code></pre>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#variables" class="doc-nav-btn prev" id="to-variables">Previous: Variables</a>
+                            <a href="#control-flow" class="doc-nav-btn next" id="to-control-flow">Next: Control Flow</a>
+                        </div>
                     </div>
                     
                     <div id="control-flow" class="doc-section">
                         <h3>Control Flow</h3>
-                        <p>Orus provides standard control flow statements for conditional execution and loops.</p>
-                        <h4>Conditionals</h4>
+                        <p>Orus provides common flow control constructs:</p>
+                        
+                        <h4>Conditionals: if/elif/else</h4>
                         <pre class="code-block"><code class="language-javascript">
-let age = 20;
+let x = 10
+let y = 20
 
-if (age >= 18) {
-    print("Adult");
-} else if (age >= 13) {
-    print("Teenager");
+if x > y {
+    print("x is greater than y")
+} elif x < y {
+    print("x is less than y")
 } else {
-    print("Child");
+    print("x equals y")
 }
                         </code></pre>
-                        <h4>Loops</h4>
+                        
+                        <h4>For Loops</h4>
+                        <p>Orus uses range-based for loops with the syntax <code>for variable in start..end</code>:</p>
                         <pre class="code-block"><code class="language-javascript">
-// For loop
-for (let i = 0; i < 5; i++) {
-    print(i);
+// For loop from 0 to 4 (5 is exclusive)
+for i in 0..5 {
+    print("Iteration: {}", i)
 }
 
+// Sum the numbers from 1 to 10
+let sum = 0
+for i in 1..11 {
+    sum = sum + i
+}
+print("Sum: {}", sum)  // Prints: 55
+                        </code></pre>
+                        
+                        <h4>While Loops</h4>
+                        <pre class="code-block"><code class="language-javascript">
 // While loop
-let count = 0;
-while (count < 5) {
-    print(count);
-    count++;
+let count = 0
+let sum = 0
+
+while count < 5 {
+    count = count + 1
+    sum = sum + count
+}
+
+print("Sum: {}", sum)  // Prints: 15
+                        </code></pre>
+                        
+                        <h4>Break and Continue</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// Break example
+let sum = 0
+for i in 1..10 {
+    if i == 5 {
+        print("Breaking at i = {}", i)
+        break
+    }
+    sum = sum + i
+}
+print("Sum: {}", sum)  // Prints: 10 (1+2+3+4)
+
+// Continue example
+sum = 0
+for i in 1..10 {
+    if i % 2 == 0 {  // Skip even numbers
+        continue
+    }
+    sum = sum + i
+}
+print("Sum of odd numbers: {}", sum)  // Prints: 25 (1+3+5+7+9)
+                        </code></pre>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#functions" class="doc-nav-btn prev" id="to-functions">Previous: Functions</a>
+                            <a href="#methods-impl" class="doc-nav-btn next" id="to-methods-impl">Next: Methods with impl</a>
+                        </div>
+                    </div>
+                    
+                    <div id="methods-impl" class="doc-section">
+                        <h3>Methods with impl</h3>
+                        <p>Methods are defined inside <code>impl</code> blocks attached to a <code>struct</code> type. Instance methods receive <code>self</code> as the first parameter.</p>
+                        
+                        <h4>Defining Methods</h4>
+                        <pre class="code-block"><code class="language-javascript">
+struct Rectangle {
+    width: i32,
+    height: i32
+}
+
+impl Rectangle {
+    // Static method (factory function)
+    fn create(width: i32, height: i32) -> Rectangle {
+        return Rectangle{
+            width: width,
+            height: height
+        }
+    }
+    
+    // Instance method that uses self
+    fn area(self) -> i32 {
+        return self.width * self.height
+    }
+    
+    // Method that modifies self
+    fn scale(self, factor: i32) {
+        self.width = self.width * factor
+        self.height = self.height * factor
+    }
 }
                         </code></pre>
+                        
+                        <h4>Using Methods</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// Create a rectangle using the static method
+let rect = Rectangle.create(5, 10)
+
+// Call instance methods
+let area = rect.area()
+print("Area: {}", area)  // Prints: 50
+
+// Modify the rectangle
+rect.scale(2)
+print("New dimensions: {} x {}", rect.width, rect.height)  // Prints: 10 x 20
+print("New area: {}", rect.area())  // Prints: 200
+                        </code></pre>
+                        
+                        <h4>Complex Example: Stack Implementation</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// A simple Stack implementation
+struct Stack {
+    data: [i32; 10],
+    top: i32
+}
+
+impl Stack {
+    fn new() -> Stack {
+        return Stack{
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            top: -1
+        }
+    }
+    
+    fn push(self, value: i32) -> bool {
+        if self.top >= 9 {
+            // Stack overflow
+            return false
+        }
+        
+        self.top = self.top + 1
+        self.data[self.top] = value
+        return true
+    }
+    
+    fn pop(self) -> i32 {
+        if self.top < 0 {
+            // Stack underflow
+            return -1
+        }
+        
+        let value: i32 = self.data[self.top]
+        self.top = self.top - 1
+        return value
+    }
+    
+    fn is_empty(self) -> bool {
+        return self.top < 0
+    }
+}
+                        </code></pre>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#control-flow" class="doc-nav-btn prev" id="to-control-flow">Previous: Control Flow</a>
+                            <a href="#printing" class="doc-nav-btn next" id="to-printing">Next: Printing Values</a>
+                        </div>
+                    </div>
+                    
+                    <div id="printing" class="doc-section">
+                        <h3>Printing Values</h3>
+                        <p>Use the built-in <code>print</code> function to write output. Strings may include <code>{}</code> placeholders which are replaced by the remaining arguments.</p>
+                        
+                        <h4>Basic Printing</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// Simple printing
+print("Hello, World!")
+
+// Printing variables
+let answer = 42
+print("The answer is", answer)
+                        </code></pre>
+                        
+                        <h4>String Interpolation</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// String interpolation with {}
+let name = "Orus"
+print("Hello, {}!", name)  // Prints: Hello, Orus!
+
+// Multiple placeholders
+let a = 10
+let b = 20
+print("The sum of {} and {} is {}", a, b, a + b)  // Prints: The sum of 10 and 20 is 30
+
+// Expressions in interpolation
+print("5 * 3 = {}", 5 * 3)  // Prints: 5 * 3 = 15
+
+// Mixed types
+print("{} is {} years old", name, 3)  // Prints: Orus is 3 years old
+                        </code></pre>
+                        
+                        <h4>String Concatenation</h4>
+                        <pre class="code-block"><code class="language-javascript">
+// String concatenation with +
+print("Hello " + "World")  // Prints: Hello World
+
+// Mixing types in concatenation
+print("Number: " + 42 + ", pi=" + 3.14)
+                        </code></pre>
+                        
+                        <!-- Add navigation buttons -->
+                        <div class="doc-navigation">
+                            <a href="#methods-impl" class="doc-nav-btn prev" id="to-methods-impl">Previous: Methods with impl</a>
+                            <div class="doc-nav-placeholder"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -395,7 +704,7 @@ while (count < 5) {
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Orus Programming Language. All rights reserved.</p>
+            <p>&copy; 2025 Orus Programming Language. All rights reserved.</p>
         </div>
     </footer>
 
