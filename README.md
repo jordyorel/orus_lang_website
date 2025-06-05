@@ -78,6 +78,11 @@ adapted from `server.py`.
 - Modify the documentation in `index.html` to accurately describe your language
 - Adjust the styling in `css/styles.css` to match your preferred design
 
+<<<<<<< codex/add-permissive-license-and-documentation
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+=======
 ## Deploying to Netlify
 
 You can host the static portion of this site on [Netlify](https://www.netlify.com/).
@@ -97,3 +102,4 @@ For single-page application style routing, add a `netlify.toml` file with:
   status = 200
 ```
 
+>>>>>>> main
