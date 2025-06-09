@@ -2,12 +2,12 @@
 :root {
     --primary-color: #4a6bff;
     --secondary-color: #6c757d;
-    --dark-color: #343a40;
-    --light-color: #f8f9fa;
+    --dark-color: #20232a;
+    --light-color: #f6f8fa;
     --success-color: #28a745;
     --danger-color: #dc3545;
-    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-code: 'Courier New', Courier, monospace;
+    --font-primary: 'Fira Sans', sans-serif;
+    --font-code: 'Fira Mono', monospace;
 }
 
 * {
@@ -68,7 +68,8 @@ ul {
 
 /* Header Styles */
 header {
-    background-color: white;
+    background-color: var(--dark-color);
+    color: var(--light-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -99,7 +100,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--dark-color);
+    color: var(--light-color);
     font-weight: 500;
     padding-bottom: 0.25rem;
     border-bottom: 2px solid transparent;
