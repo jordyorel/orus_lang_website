@@ -1,6 +1,7 @@
 /* Global Styles */
 :root {
-    --primary-color: #4a6bff;
+    /* Primary accent color derived from the Orus logo */
+    --primary-color: #e9c983;
     --secondary-color: #6c757d;
     --dark-color: #20232a;
     --light-color: #f6f8fa;
@@ -48,7 +49,7 @@ ul {
 }
 
 .btn.primary:hover {
-    background-color: #3a5bef;
+    background-color: #e3bb64; /* slightly darker accent */
 }
 
 .btn.secondary {
@@ -89,6 +90,20 @@ nav {
     color: var(--primary-color);
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+/* Logo image inside the navigation bar */
+.logo img {
+    height: 32px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Small logo used in the Home navigation link */
+.nav-logo {
+    height: 20px;
+    margin-right: 0.25rem;
+    vertical-align: middle;
 }
 
 .nav-links {
@@ -623,7 +638,7 @@ footer {
 }
 
 .doc-nav-btn:hover {
-    background-color: #3a5bef;
+    background-color: #e3bb64;
 }
 
 .doc-nav-btn.prev::before {
